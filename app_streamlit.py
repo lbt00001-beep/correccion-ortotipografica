@@ -15,6 +15,7 @@ st.set_page_config(
     page_icon="📝",
     layout="wide"
 )
+st.sidebar.caption("By Luis Benedicto Tuzón with Claude Opus 4.5 Thinking · versión 2.2.1 · 2026")
 
 # Estilos CSS para el Diff (Rojo/Verde)
 st.markdown("""
@@ -177,17 +178,24 @@ if 'correcciones_por_cat' in st.session_state:
         
         st.markdown("---")
         
-        # --- LISTA DETALLADA CON COLORES ---
+        # --- LISTA DETALLADA CON SELECTOR (GRUPOS) ---
         st.markdown("## 🔍 Revisión Detallada")
         
-        for cat_id, corrs in st.session_state['correcciones_por_cat'].items():
-            if not corrs:
-                continue
-                
-            nombre_cat = corrector.CATEGORIAS.get(cat_id, cat_id)
-            with st.expander(f"📂 {nombre_cat} ({len(corrs)} detecciones)", expanded=True):
-                
-                for idx, c in enumerate(corrs):
+        # Crear un selector para cada categoría activa
+        cat_ids = list(cat_activas.keys())
+        cat_labels = {cat_id: f"{corrector.CATEGORIAS.get(cat_id, cat_id)} ({cat_activas[cat_id]})" for cat_id in cat_ids}
+        
+        cat_seleccionada = st.selectbox(
+            "Selecciona el grupo de errores a revisar:",
+            options=cat_ids,
+            format_func=lambda x: cat_labels[x]
+        )
+        
+        corrs = st.session_state['correcciones_por_cat'].get(cat_seleccionada, [])
+        if corrs:
+            st.markdown(f"### {corrector.CATEGORIAS.get(cat_seleccionada, cat_seleccionada)}")
+            
+            for idx, c in enumerate(corrs):
                     # Generar HTML con colores
                     html_old, html_new = get_diff_html(c.texto_original, c.texto_nuevo)
                     
@@ -238,4 +246,4 @@ if 'correcciones_por_cat' in st.session_state:
                     )
 
 st.sidebar.markdown("---")
-st.sidebar.caption("MBAI Native AI-Corrector v2.2")
+
