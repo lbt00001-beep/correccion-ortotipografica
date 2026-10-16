@@ -65,10 +65,11 @@ Ejemplos de uso:
     parser.add_argument(
         '--version',
         action='version',
-        version='%(prog)s 2.0 (Fase Profesional)'
+        version='%(prog)s 2.2.1 · By Luis Benedicto Tuzón with Claude Opus 4.5 Thinking · versión 2.2.1 · 2026'
     )
     
     args = parser.parse_args()
+    print("By Luis Benedicto Tuzón with Claude Opus 4.5 Thinking · versión 2.2.1 · 2026")
     
     # Validar archivo de entrada
     ruta_entrada = Path(args.archivo_entrada)

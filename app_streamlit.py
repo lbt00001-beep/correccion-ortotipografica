@@ -15,6 +15,7 @@ st.set_page_config(
     page_icon="📝",
     layout="wide"
 )
+st.sidebar.caption("By Luis Benedicto Tuzón with Claude Opus 4.5 Thinking · versión 2.2.1 · 2026")
 
 # Estilos CSS para el Diff (Rojo/Verde)
 st.markdown("""
@@ -245,4 +246,4 @@ if 'correcciones_por_cat' in st.session_state:
                     )
 
 st.sidebar.markdown("---")
-st.sidebar.caption("MBAI Native AI-Corrector v2.2")
+

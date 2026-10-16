@@ -1,3 +1,5 @@
+> **Repositorio principal:** `lbt00001-beep/correccion-ortotipografica`. Consolidación de las dos copias y entrega 2.2.1: [MANTENIMIENTO.md](MANTENIMIENTO.md).
+
 # App de Corrección Ortotipográfica
 
 Sistema profesional de corrección ortotipográfica y de estilo para documentos Word (.docx) en español. Dos modos de operación: básico y profesional.
